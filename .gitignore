@@ -22,9 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",  // Add CI=False here
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+#   "scripts": {
+#     "start": "react-scripts start",
+#     "build": "CI=false && react-scripts build",  // Add CI=False here
+#     "test": "react-scripts test",
+#     "eject": "react-scripts eject"
+#   },
