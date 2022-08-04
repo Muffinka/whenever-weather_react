@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Temperature from "./Temperature";
+import ClipLoader from "react-spinners/BarLoader";
 
 import clearSkyD from "./img/01d.png";
 import clearSkyN from "./img/01n.png";
@@ -185,7 +186,12 @@ export default function Weather(props) {
             onChange={updateCity}
           />
         </form>
-        <div className="pt-3 text-light">Looking for something?</div>
+        <div className="pt-3 text-center text-light">
+          Want to know weather in your city?
+        </div>
+        <div className="row pt-2 justify-content-center">
+          <ClipLoader color="#ffffff" width={150} margin="5" />
+        </div>
       </div>
     );
   }

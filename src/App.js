@@ -10,9 +10,9 @@ export default function App() {
         <WeatherWork />
         <Forecast />
         <h5 className="text-center text-light">
-          Go to my
+          Go to my&nbsp;&nbsp;
           <a
-            href="https://github.com/Muffinka/whenever-weather"
+            href="https://github.com/Muffinka/whenever-weather_react"
             target="_blank"
             alt="Github repository @Muffinka"
           >
