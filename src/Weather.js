@@ -1,26 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Temperature from "./Temperature";
+import IconShow from "./IconShow";
+import IconShowForecast from "./IconShowForecast";
 import ClipLoader from "react-spinners/BarLoader";
-
-import clearSkyD from "./img/01d.png";
-import clearSkyN from "./img/01n.png";
-import fewCloudsD from "./img/02d.png";
-import fewCloudsN from "./img/02n.png";
-import scatteredCloudsD from "./img/03d.png";
-import scatteredCloudsN from "./img/03n.png";
-import brokenCloudsD from "./img/04d.png";
-import brokenCloudsN from "./img/04n.png";
-import showerRainD from "./img/09d.png";
-import showerRainN from "./img/09n.png";
-import rainD from "./img/10d.png";
-import rainN from "./img/10n.png";
-import thunderstormD from "./img/11d.png";
-import thunderstormN from "./img/11n.png";
-import snowD from "./img/13d.png";
-import snowN from "./img/13n.png";
-import mistD from "./img/50d.png";
-import mistN from "./img/50n.png";
 
 export default function Weather(props) {
   let apiKey = "992c88e05d9caeefb130effc34e9ce07";
@@ -33,6 +16,11 @@ export default function Weather(props) {
   let [apiPressure, setApiPressure] = useState(null);
   let [apiWind, setApiWind] = useState(null);
   let [apiIcon, setApiIcon] = useState(null);
+  let [apiIcon1, setApiIcon1] = useState(null);
+  let [apiIcon2, setApiIcon2] = useState(null);
+  let [apiIcon3, setApiIcon3] = useState(null);
+  let [apiIcon4, setApiIcon4] = useState(null);
+  let [apiIcon5, setApiIcon5] = useState(null);
   let [apiCityName, setApiCityName] = useState(null);
   let [apiCountryName, setApiCountryName] = useState(null);
   let [minTemperature, setMinTemperature] = useState(null);
@@ -47,7 +35,6 @@ export default function Weather(props) {
   let [maxTemperature4, setMaxTemperature4] = useState(null);
   let [minTemperature5, setMinTemperature5] = useState(null);
   let [maxTemperature5, setMaxTemperature5] = useState(null);
-  // let [icon1, setIcon1] = useState(null);
 
   let now = new Date();
 
@@ -86,8 +73,6 @@ export default function Weather(props) {
       this.getDate() + ("string" == typeof e ? parseInt(e, 10) : e)
     );
   };
-
-  /////
 
   let now1 = new Date().NextDay(1);
   let date1 = now1.getDate();
@@ -147,7 +132,6 @@ export default function Weather(props) {
     setApiHumidity(response.data.main.humidity);
     setApiWind(response.data.wind.speed);
     setApiIcon(response.data.weather[0].icon);
-    iconShow(response.data.weather[0].icon);
     console.log(setApiIcon);
     setApiCityName(response.data.name);
     setApiCountryName(response.data.sys.country);
@@ -160,32 +144,6 @@ export default function Weather(props) {
 
     function capitalize(str) {
       return setApiDescription(str.charAt(0).toUpperCase() + str.slice(1));
-    }
-
-    function iconShow(response) {
-      console.log(response);
-      const codeMapping = {
-        "01d": clearSkyD,
-        "01n": clearSkyN,
-        "02d": fewCloudsD,
-        "02n": fewCloudsN,
-        "03d": scatteredCloudsD,
-        "03n": scatteredCloudsN,
-        "04d": brokenCloudsD,
-        "04n": brokenCloudsN,
-        "09d": showerRainD,
-        "09n": showerRainN,
-        "10d": rainD,
-        "10n": rainN,
-        "11d": thunderstormD,
-        "11n": thunderstormN,
-        "13d": snowD,
-        "13n": snowN,
-        "50d": mistD,
-        "50n": mistN,
-      };
-
-      return setApiIcon(codeMapping[response]);
     }
   }
 
@@ -202,100 +160,11 @@ export default function Weather(props) {
     setMaxTemperature4(Math.round(response5.data.daily[4].temp.max));
     setMinTemperature5(Math.round(response5.data.daily[5].temp.min));
     setMaxTemperature5(Math.round(response5.data.daily[5].temp.max));
-    // iconShow5(
-    //   response5.data.weather[1].icon,
-    //   response5.data.weather[2].icon,
-    //   response5.data.weather[3].icon,
-    //   response5.data.weather[4].icon,
-    //   response5.data.weather[5].icon
-    // );
-
-    // function iconShow5(response5) {
-    //   console.log(response5);
-    //   const codeMapping = {
-    //     "01d": clearSkyD,
-    //     "01n": clearSkyN,
-    //     "02d": fewCloudsD,
-    //     "02n": fewCloudsN,
-    //     "03d": scatteredCloudsD,
-    //     "03n": scatteredCloudsN,
-    //     "04d": brokenCloudsD,
-    //     "04n": brokenCloudsN,
-    //     "09d": showerRainD,
-    //     "09n": showerRainN,
-    //     "10d": rainD,
-    //     "10n": rainN,
-    //     "11d": thunderstormD,
-    //     "11n": thunderstormN,
-    //     "13d": snowD,
-    //     "13n": snowN,
-    //     "50d": mistD,
-    //     "50n": mistN,
-    //   };
-
-    //   return setApiIcon(codeMapping[respons5]);
-    // }
-    // setIcon1(response5.data.daily[1].weather[0].icon);
-    // console.log(setIcon1);
-
-    // function iconShow5(name) {
-    //   if (response5.data.weather[0].icon === "01d") {
-    //     return name(clearSkyD);
-    //   }
-    //   if (response5.data.weather[0].icon === "01n") {
-    //     return name(clearSkyN);
-    //   }
-    //   if (response5.data.weather[0].icon === "02d") {
-    //     return name(fewCloudsD);
-    //   }
-    //   if (response5.data.weather[0].icon === "02n") {
-    //     return name(fewCloudsN);
-    //   }
-    //   if (response5.data.weather[0].icon === "03d") {
-    //     return name(scatteredCloudsD);
-    //   }
-    //   if (response5.data.weather[0].icon === "03n") {
-    //     return name(scatteredCloudsN);
-    //   }
-    //   if (response5.data.weather[0].icon === "04d") {
-    //     return name(brokenCloudsD);
-    //   }
-    //   if (response5.data.weather[0].icon === "04n") {
-    //     return name(brokenCloudsN);
-    //   }
-    //   if (response5.data.weather[0].icon === "09d") {
-    //     return name(showerRainD);
-    //   }
-    //   if (response5.data.weather[0].icon === "09n") {
-    //     return name(showerRainN);
-    //   }
-    //   if (response5.data.weather[0].icon === "10d") {
-    //     return name(rainD);
-    //   }
-    //   if (response5.data.weather[0].icon === "10n") {
-    //     return name(rainN);
-    //   }
-    //   if (response5.data.weather[0].icon === "11d") {
-    //     return name(thunderstormD);
-    //   }
-    //   if (response5.data.weather[0].icon === "11n") {
-    //     return name(thunderstormN);
-    //   }
-    //   if (response5.data.weather[0].icon === "13d") {
-    //     return name(snowD);
-    //   }
-    //   if (response5.data.weather[0].icon === "13n") {
-    //     return name(snowN);
-    //   }
-    //   if (response5.data.weather[0].icon === "50d") {
-    //     return name(mistD);
-    //   }
-    //   if (response5.data.weather[0].icon === "50n") {
-    //     return name(mistN);
-    //   } else {
-    //     return name(clearSkyD);
-    //   }
-    // }
+    setApiIcon1(response5.data.daily[1].weather[0].icon);
+    setApiIcon2(response5.data.daily[2].weather[0].icon);
+    setApiIcon3(response5.data.daily[3].weather[0].icon);
+    setApiIcon4(response5.data.daily[4].weather[0].icon);
+    setApiIcon5(response5.data.daily[5].weather[0].icon);
   }
 
   if (apiTemperature) {
@@ -314,7 +183,7 @@ export default function Weather(props) {
         </div>
         <div className="row px-4 py-2 text-light cfstyle">
           <div className="col-4 align-self-center">
-            <img src={apiIcon} alt="weather icon" />
+            <IconShow code={apiIcon} />
           </div>
           <div className="col-4 px-3 align-self-center text-light">
             <div className="pb-2">
@@ -346,12 +215,7 @@ export default function Weather(props) {
             <h5 className="text-uppercase">{day}</h5>
             <h3>{date}</h3>
             <h4>{month}</h4>
-            <img
-              className="inlineImg"
-              src={apiIcon}
-              alt="Rainy"
-              id="weather-icon"
-            />
+            <IconShowForecast code={apiIcon} />
             <div className="row">
               <div className="col-6 p-0">
                 min
@@ -369,12 +233,7 @@ export default function Weather(props) {
             <h5 className="text-uppercase">{day1}</h5>
             <h3>{date1}</h3>
             <h4>{month1}</h4>
-            <img
-              className="inlineImg"
-              src={apiIcon}
-              alt="Rainy"
-              id="weather-icon1"
-            />
+            <IconShowForecast code={apiIcon1} />
             <div className="row">
               <div className="col-6 p-0">
                 min
@@ -394,12 +253,7 @@ export default function Weather(props) {
             </h5>
             <h3>{date2}</h3>
             <h4>{month2}</h4>
-            <img
-              className="inlineImg"
-              src={apiIcon}
-              alt="Rainy"
-              id="weather-icon2"
-            />
+            <IconShowForecast code={apiIcon2} />
             <div className="row">
               <div className="col-6 p-0">
                 min
@@ -417,12 +271,7 @@ export default function Weather(props) {
             <h5 className="text-uppercase">{day3}</h5>
             <h3>{date3}</h3>
             <h4>{month3}</h4>
-            <img
-              className="inlineImg"
-              src={apiIcon}
-              alt="Rainy"
-              id="weather-icon3"
-            />
+            <IconShowForecast code={apiIcon3} />
             <div className="row">
               <div className="col-6 p-0">
                 min
@@ -440,12 +289,7 @@ export default function Weather(props) {
             <h5 className="text-uppercase">{day4}</h5>
             <h3>{date4}</h3>
             <h4>{month4}</h4>
-            <img
-              className="inlineImg"
-              src={apiIcon}
-              alt="Rainy"
-              id="weather-icon4"
-            />
+            <IconShowForecast code={apiIcon4} />
             <div className="row">
               <div className="col-6 p-0">
                 min
@@ -463,12 +307,7 @@ export default function Weather(props) {
             <h5 className="text-uppercase">{day5}</h5>
             <h3>{date5}</h3>
             <h4>{month5}</h4>
-            <img
-              className="inlineImg"
-              src={apiIcon}
-              alt="Rainy"
-              id="weather-icon5"
-            />
+            <IconShowForecast code={apiIcon5} />
             <div className="row">
               <div className="col-6 p-0">
                 min
@@ -483,7 +322,6 @@ export default function Weather(props) {
             </div>
           </span>
         </div>
-        //END FORECAST
       </div>
     );
   } else {
