@@ -202,39 +202,39 @@ export default function Weather(props) {
     setMaxTemperature4(Math.round(response5.data.daily[4].temp.max));
     setMinTemperature5(Math.round(response5.data.daily[5].temp.min));
     setMaxTemperature5(Math.round(response5.data.daily[5].temp.max));
-    iconShow5(
-      response.data.weather[1].icon,
-      response.data.weather[2].icon,
-      response.data.weather[3].icon,
-      response.data.weather[4].icon,
-      response.data.weather[5].icon
-    );
+    // iconShow5(
+    //   response5.data.weather[1].icon,
+    //   response5.data.weather[2].icon,
+    //   response5.data.weather[3].icon,
+    //   response5.data.weather[4].icon,
+    //   response5.data.weather[5].icon
+    // );
 
-    function iconShow5(response) {
-      console.log(response);
-      const codeMapping = {
-        "01d": clearSkyD,
-        "01n": clearSkyN,
-        "02d": fewCloudsD,
-        "02n": fewCloudsN,
-        "03d": scatteredCloudsD,
-        "03n": scatteredCloudsN,
-        "04d": brokenCloudsD,
-        "04n": brokenCloudsN,
-        "09d": showerRainD,
-        "09n": showerRainN,
-        "10d": rainD,
-        "10n": rainN,
-        "11d": thunderstormD,
-        "11n": thunderstormN,
-        "13d": snowD,
-        "13n": snowN,
-        "50d": mistD,
-        "50n": mistN,
-      };
+    // function iconShow5(response5) {
+    //   console.log(response5);
+    //   const codeMapping = {
+    //     "01d": clearSkyD,
+    //     "01n": clearSkyN,
+    //     "02d": fewCloudsD,
+    //     "02n": fewCloudsN,
+    //     "03d": scatteredCloudsD,
+    //     "03n": scatteredCloudsN,
+    //     "04d": brokenCloudsD,
+    //     "04n": brokenCloudsN,
+    //     "09d": showerRainD,
+    //     "09n": showerRainN,
+    //     "10d": rainD,
+    //     "10n": rainN,
+    //     "11d": thunderstormD,
+    //     "11n": thunderstormN,
+    //     "13d": snowD,
+    //     "13n": snowN,
+    //     "50d": mistD,
+    //     "50n": mistN,
+    //   };
 
-      return setApiIcon(codeMapping[response]);
-    }
+    //   return setApiIcon(codeMapping[respons5]);
+    // }
     // setIcon1(response5.data.daily[1].weather[0].icon);
     // console.log(setIcon1);
 
@@ -348,7 +348,7 @@ export default function Weather(props) {
             <h4>{month}</h4>
             <img
               className="inlineImg"
-              src={apiIcon1}
+              src={apiIcon}
               alt="Rainy"
               id="weather-icon"
             />
