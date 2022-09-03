@@ -196,7 +196,7 @@ export default function Weather(props) {
             <h2 className="text-uppercase">{day}</h2>
             <h4>
               <span>{date}</span>
-              <span>{month}</span>
+              <span>&nbsp{month}</span>
             </h4>
             <h3>
               <span>{hours}</span>:<span>{minutes}</span>
